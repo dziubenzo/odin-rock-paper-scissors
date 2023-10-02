@@ -78,7 +78,6 @@ function playRound(playerChoice, computerChoice) {
 
 // Play an entire game of rock paper scissors
 // First to five wins
-
 function game() {
 
   let playerScore = 0;
@@ -111,6 +110,9 @@ function game() {
   }
 }
 
+// Print starting message to the Console
 console.log('ROCK PAPER SCISSORS. DEVTOOLS CONSOLE EDITION.');
 console.log('');
+
+// Call the game() function to play a game of rock paper scissors
 game();
