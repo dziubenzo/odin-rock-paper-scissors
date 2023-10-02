@@ -35,5 +35,46 @@ function getPlayerChoice() {
   return playerChoice;
 }
 
-getComputerChoice();
-getPlayerChoice();
+// Play one round of rock paper scissors
+// Return one of the three results
+function playRound(playerChoice, computerChoice) {
+
+  switch (playerChoice) {
+    case 'rock':
+      if (computerChoice === 'rock') {
+        console.log('Tie!');
+        return 'tie';
+      } else if (computerChoice === 'paper') {
+        console.log('You lose! Paper beats Rock :(');
+        return 'lost';
+      } else {
+        console.log('You win! Rock beats Scissors :)');
+        return 'won';
+      }
+    case 'paper':
+      if (computerChoice === 'rock') {
+        console.log('You win! Paper beats Rock :)');
+        return 'won';
+      } else if (computerChoice === 'paper') {
+        console.log('Tie!');
+        return 'tie';
+      } else {
+        console.log('You lose! Scissors beat Paper :(');
+        return 'lost';
+      }
+    case 'scissors':
+      if (computerChoice === 'rock') {
+        console.log('You lose! Rock beats Scissors :(');
+        return 'lost';
+      } else if (computerChoice === 'paper') {
+        console.log('You win! Scissors beat Paper :)');
+        return 'won';
+      } else {
+        console.log('Tie!');
+        return 'tie';
+      }
+  }
+}
+
+playRound(getPlayerChoice(), getComputerChoice());
+
