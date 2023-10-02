@@ -2,9 +2,9 @@
 // Print result to the console
 function getComputerChoice() {
 
-  const choices = ['Rock', 'Paper', 'Scissors'];
+  const choices = ['rock', 'paper', 'scissors'];
   let arrayIndex = getArrayIndex();
-  console.log(choices[arrayIndex]);
+  return choices[arrayIndex];
 }
 
 // Generate array index for the getComputerChoice() function
@@ -23,4 +23,17 @@ function getArrayIndex() {
   return arrayIndex;
 }
 
+// Get proper input from player
+function getPlayerChoice() {
+
+  let playerChoice;
+
+  do {
+    playerChoice = prompt('Rock, paper, or scissors?').toLowerCase();
+  } while (playerChoice != 'rock' && playerChoice != 'paper' && playerChoice != 'scissors');
+
+  return playerChoice;
+}
+
 getComputerChoice();
+getPlayerChoice();
