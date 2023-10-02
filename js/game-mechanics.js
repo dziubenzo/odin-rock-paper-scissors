@@ -76,5 +76,41 @@ function playRound(playerChoice, computerChoice) {
   }
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+// Play an entire game of rock paper scissors
+// First to five wins
 
+function game() {
+
+  let playerScore = 0;
+  let computerScore = 0;
+  let round = 1;
+  const scoreToWin = 5;
+
+  while (playerScore < scoreToWin && computerScore < scoreToWin) {
+    console.log(`ROUND ${round}`);
+    console.log('');
+    let result = playRound(getPlayerChoice(), getComputerChoice());
+
+    if (result === 'won') {
+      playerScore++;
+    } else if (result === 'lost') {
+      computerScore++;
+    }
+
+    console.log('');
+    console.log(`YOU: ${playerScore}`);
+    console.log(`COMPUTER: ${computerScore}`);
+    console.log('');
+    round++;
+  }
+
+  if (playerScore === scoreToWin) {
+    console.log('CONGRATULATIONS! You win the game!');
+  } else if (computerScore === scoreToWin) {
+    console.log('GAME OVER! Computer wins this time...');
+  }
+}
+
+console.log('ROCK PAPER SCISSORS. DEVTOOLS CONSOLE EDITION.');
+console.log('');
+game();
