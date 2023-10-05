@@ -193,17 +193,16 @@ function playGame(event) {
   // Game over behaviour
   if (playerScore === scoreToWin || computerScore === scoreToWin) {
     parent.removeChild(roundPara);
-    parent.removeChild(playerWeaponPara);
-    parent.removeChild(computerWeaponPara);
-    parent.removeChild(resultPara);
-    let gameOverPara = document.createElement('p');
-    gameOverPara.classList.add('game-over');
-    parent.appendChild(gameOverPara);
+    // parent.removeChild(playerWeaponPara);
+    // parent.removeChild(computerWeaponPara);
+    resultPara.classList.replace('result-round', 'game-over');
+    // Move para to the end
+    parent.appendChild(resultPara);
 
     if (playerScore === scoreToWin) {
-      gameOverPara.textContent = 'YOU WIN! CONGRATULATIONS!';
+      resultPara.textContent = 'GAME OVER! YOU WIN!';
     } else {
-      gameOverPara.textContent = 'Computer wins this time...';
+      resultPara.textContent = 'GAME OVER! Computer wins this time...';
     }
     
     // Remove respective event listener
