@@ -8,3 +8,40 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.header p {
+  font-size: small;
+  color: grey;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+}
+
+button {
+  font-size: 50px;
+  padding: 15px;
+  margin: 15px 26px;
+  background-color: white;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 10px;
+}
+
+.rock:hover {
+  background-color: rgb(237, 237, 237);
+}
+
+.paper:hover {
+  background-color: rgb(250, 232, 210);
+}
+
+.scissors:hover {
+  background-color: rgb(255, 219, 219);
+}
