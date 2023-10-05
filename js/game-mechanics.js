@@ -88,7 +88,7 @@ function game() {
   while (playerScore < scoreToWin && computerScore < scoreToWin) {
     console.log(`ROUND ${round}`);
     console.log('');
-    let result = playRound(getPlayerChoice(), getComputerChoice());
+    // let result = playRound(getPlayerChoice(), getComputerChoice());
 
     if (result === 'won') {
       playerScore++;
