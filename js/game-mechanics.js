@@ -106,11 +106,8 @@ const parent = document.querySelector('.results');
 let roundPara = document.createElement('p');
 roundPara.classList.add('round');
 
-let playerWeaponPara = document.createElement('p');
-playerWeaponPara.classList.add('player-weapon');
-
-let computerWeaponPara = document.createElement('p');
-computerWeaponPara.classList.add('computer-weapon');
+let weaponsPara = document.createElement('p');
+weaponsPara.classList.add('weapons');
 
 let resultPara = document.createElement('p');
 resultPara.classList.add('result-round');
@@ -134,8 +131,7 @@ function showParas(event) {
     return;
   }
   parent.appendChild(roundPara);
-  parent.appendChild(playerWeaponPara);
-  parent.appendChild(computerWeaponPara);
+  parent.appendChild(weaponsPara);
   parent.appendChild(resultPara);
   parent.appendChild(playerScorePara);
   parent.appendChild(computerScorePara);
@@ -151,30 +147,18 @@ function playGame(event) {
     return;
   }
 
-  // Get result
+  // Get result and respective emoji
   let computerChoice = getComputerChoice();
   let result = playRound(event.target.value, computerChoice);
+  let playerEmoji = convertToEmoji(event.target.value);
+  let computerEmoji = convertToEmoji(computerChoice);
 
   // Update text in all paragraphs
   // Update variables
   round++;
   roundPara.textContent = `ROUND ${round}`;
 
-  if (event.target.value === 'rock') {
-    playerWeaponPara.textContent = 'Your choice: 🪨';
-  } else if (event.target.value === 'paper') {
-    playerWeaponPara.textContent = 'Your choice: 📜';
-  } else {
-    playerWeaponPara.textContent = 'Your choice: ✂️';
-  }
-
-  if (computerChoice === 'rock') {
-    computerWeaponPara.textContent = 'Computer choice: 🪨';
-  } else if (computerChoice === 'paper') {
-    computerWeaponPara.textContent = 'Computer choice: 📜';
-  } else {
-    computerWeaponPara.textContent = 'Computer choice: ✂️';
-  }
+  weaponsPara.textContent = `${playerEmoji} versus ${computerEmoji}`;
 
   if (result === 'won') {
     resultPara.textContent = 'YOU WIN THIS ROUND!';
