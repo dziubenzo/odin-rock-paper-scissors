@@ -157,7 +157,6 @@ function playGame(event) {
 
   // Update text in all paragraphs
   // Update variables
-
   round++;
   roundPara.textContent = `ROUND ${round}`;
 
@@ -193,8 +192,6 @@ function playGame(event) {
   // Game over behaviour
   if (playerScore === scoreToWin || computerScore === scoreToWin) {
     parent.removeChild(roundPara);
-    // parent.removeChild(playerWeaponPara);
-    // parent.removeChild(computerWeaponPara);
     resultPara.classList.replace('result-round', 'game-over');
     // Move para to the end
     parent.appendChild(resultPara);
@@ -204,8 +201,19 @@ function playGame(event) {
     } else {
       resultPara.textContent = 'GAME OVER! Computer wins this time...';
     }
-    
+
     // Remove respective event listener
     buttonsDiv.removeEventListener('click', playGame);
+  }
+}
+
+// Convert weapon to emoji (helper function)
+function convertToEmoji(weapon) {
+  if (weapon === 'rock') {
+    return '🪨';
+  } else if (weapon === 'paper') {
+    return '📜';
+  } else {
+    return '✂️';
   }
 }
