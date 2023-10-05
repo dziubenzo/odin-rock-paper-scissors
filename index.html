@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./js/game-mechanics.js"></script>
+    <script src="./js/game-mechanics.js" defer></script>
     <link rel="stylesheet" href="./css/styles.css" />
     <title>Rock Paper Scissors</title>
   </head>
@@ -15,11 +15,11 @@
       <p><em>UI Version</em></p>
     </div>
     <div class="content">
-      <h3 id="weapon-heading">Choose your weapon:</h3 id="weapon-header">
+      <h3 id="weapon-heading">Choose your weapon:</h3>
       <div class="buttons">
-        <button class="rock">🪨</button>
-        <button class="paper">📜</button>
-        <button class="scissors">✂️</button>
+        <button class="rock" value="rock">🪨</button>
+        <button class="paper" value="paper">📜</button>
+        <button class="scissors" value="scissors">✂️</button>
       </div>
       <div class="results"></div>
     </div>

@@ -1,7 +1,6 @@
 // Get random computer choice for the game
 // Print result to the console
 function getComputerChoice() {
-
   const choices = ['rock', 'paper', 'scissors'];
   let arrayIndex = getArrayIndex();
   return choices[arrayIndex];
@@ -9,7 +8,6 @@ function getComputerChoice() {
 
 // Generate array index for the getComputerChoice() function
 function getArrayIndex() {
-
   let randomNumber = Math.random() * 100;
   let arrayIndex;
 
@@ -23,22 +21,9 @@ function getArrayIndex() {
   return arrayIndex;
 }
 
-// Get proper input from player
-function getPlayerChoice() {
-
-  let playerChoice;
-
-  do {
-    playerChoice = prompt('Rock, paper, or scissors?').toLowerCase();
-  } while (playerChoice != 'rock' && playerChoice != 'paper' && playerChoice != 'scissors');
-
-  return playerChoice;
-}
-
 // Play one round of rock paper scissors
 // Return one of the three results
 function playRound(playerChoice, computerChoice) {
-
   switch (playerChoice) {
     case 'rock':
       if (computerChoice === 'rock') {
@@ -76,43 +61,72 @@ function playRound(playerChoice, computerChoice) {
   }
 }
 
-// Play an entire game of rock paper scissors
-// First to five wins
-function game() {
+// // Play an entire game of rock paper scissors
+// // First to five wins
+// function game() {
 
-  let playerScore = 0;
-  let computerScore = 0;
-  let round = 1;
-  const scoreToWin = 5;
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   let round = 1;
+//   const scoreToWin = 5;
 
-  while (playerScore < scoreToWin && computerScore < scoreToWin) {
-    console.log(`ROUND ${round}`);
-    console.log('');
-    // let result = playRound(getPlayerChoice(), getComputerChoice());
+//   while (playerScore < scoreToWin && computerScore < scoreToWin) {
+//     console.log(`ROUND ${round}`);
+//     console.log('');
+//     let result = playRound(getPlayerChoice(), getComputerChoice());
 
-    if (result === 'won') {
-      playerScore++;
-    } else if (result === 'lost') {
-      computerScore++;
-    }
+//     if (result === 'won') {
+//       playerScore++;
+//     } else if (result === 'lost') {
+//       computerScore++;
+//     }
 
-    console.log('');
-    console.log(`YOU: ${playerScore}`);
-    console.log(`COMPUTER: ${computerScore}`);
-    console.log('');
-    round++;
-  }
+//     console.log('');
+//     console.log(`YOU: ${playerScore}`);
+//     console.log(`COMPUTER: ${computerScore}`);
+//     console.log('');
+//     round++;
+//   }
 
-  if (playerScore === scoreToWin) {
-    console.log('CONGRATULATIONS! You win the game!');
-  } else if (computerScore === scoreToWin) {
-    console.log('GAME OVER! Computer wins this time...');
-  }
+//   if (playerScore === scoreToWin) {
+//     console.log('CONGRATULATIONS! You win the game!');
+//   } else if (computerScore === scoreToWin) {
+//     console.log('GAME OVER! Computer wins this time...');
+//   }
+// }
+
+// UI implementation
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
+const scoreToWin = 5;
+
+const parent = document.querySelector('.results');
+
+let roundPara = document.createElement('p');
+roundPara.classList.add('round');
+
+let playerWeaponPara = document.createElement('p');
+playerWeaponPara.classList.add('player-weapon');
+
+let computerWeaponPara = document.createElement('p');
+computerWeaponPara.classList.add('computer-weapon');
+
+let resultPara = document.createElement('p');
+resultPara.classList.add('result-round');
+
+let playerScorePara = document.createElement('p');
+playerScorePara.classList.add('player-score');
+
+let computerScorePara = document.createElement('p');
+computerScorePara.classList.add('computer-score');
+
+const buttonsDiv = document.querySelector('.buttons');
+
+// Add result-related HTML elements to the DOM once a button is clicked
+buttonsDiv.addEventListener('click', showParas, { once: true });
+
+function showParas() {
+  parent.appendChild(roundPara);
 }
-
-// Print starting message to the Console
-console.log('ROCK PAPER SCISSORS. DEVTOOLS CONSOLE EDITION.');
-console.log('');
-
-// Call the game() function to play a game of rock paper scissors
-game();
