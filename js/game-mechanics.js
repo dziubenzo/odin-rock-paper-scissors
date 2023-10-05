@@ -123,12 +123,15 @@ computerScorePara.classList.add('computer-score');
 
 const buttonsDiv = document.querySelector('.buttons');
 
-buttonsDiv.addEventListener('click', showParas, { once: true });
+buttonsDiv.addEventListener('click', showParas);
 
 buttonsDiv.addEventListener('click', playGame);
 
 // Add result-related HTML elements to the DOM once a button is clicked
-function showParas() {
+function showParas(event) {
+  if (event.target === buttonsDiv) {
+    return;
+  }
   parent.appendChild(roundPara);
   parent.appendChild(playerWeaponPara);
   parent.appendChild(computerWeaponPara);
@@ -139,6 +142,10 @@ function showParas() {
 
 // Play the game and update scores once a button is clicked
 function playGame(event) {
+  if (event.target === buttonsDiv) {
+    return;
+  }
   let computerChoice = getComputerChoice();
   let result = playRound(event.target.value, computerChoice);
+  console.log(result);
 }
