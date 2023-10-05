@@ -98,7 +98,7 @@ function playRound(playerChoice, computerChoice) {
 
 let playerScore = 0;
 let computerScore = 0;
-let round = 1;
+let round = 0;
 const scoreToWin = 5;
 
 const parent = document.querySelector('.results');
@@ -129,6 +129,8 @@ buttonsDiv.addEventListener('click', playGame);
 
 // Add result-related HTML elements to the DOM once a button is clicked
 function showParas(event) {
+
+  // Make sure only one of the buttons triggers the event
   if (event.target === buttonsDiv) {
     return;
   }
@@ -142,10 +144,37 @@ function showParas(event) {
 
 // Play the game and update scores once a button is clicked
 function playGame(event) {
+
+  // Make sure only one of the buttons triggers the event
   if (event.target === buttonsDiv) {
     return;
   }
+
+  // Game over behaviour
+  if (playerScore === scoreToWin || computerScore === scoreToWin) {
+    parent.removeChild(roundPara);
+    parent.removeChild(playerWeaponPara);
+    parent.removeChild(computerWeaponPara);
+    parent.removeChild(resultPara);
+    let gameOverPara = document.createElement('p');
+    gameOverPara.classList.add('game-over');
+
+    if (playerScore === scoreToWin) {
+      gameOverPara.textContent = 'YOU WIN! CONGRATULATIONS!';
+    } else {
+      gameOverPara.textContent = 'Computer wins this time...';
+    }
+    return;
+  }
+
+  // Get result and update variables
   let computerChoice = getComputerChoice();
   let result = playRound(event.target.value, computerChoice);
-  console.log(result);
+
+  if (result === 'won') {
+    playerScore++;
+  } else if (result === 'lost') {
+    computerScore++;
+  }
+  round++;
 }
