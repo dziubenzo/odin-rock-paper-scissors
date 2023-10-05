@@ -139,6 +139,9 @@ function showParas(event) {
   parent.appendChild(resultPara);
   parent.appendChild(playerScorePara);
   parent.appendChild(computerScorePara);
+
+  // Remove respective event listener
+  buttonsDiv.removeEventListener('click', showParas);
 }
 
 // Play the game and update scores once a button is clicked
@@ -147,6 +150,45 @@ function playGame(event) {
   if (event.target === buttonsDiv) {
     return;
   }
+
+  // Get result
+  let computerChoice = getComputerChoice();
+  let result = playRound(event.target.value, computerChoice);
+
+  // Update text in all paragraphs
+  // Update variables
+
+  round++;
+  roundPara.textContent = `ROUND ${round}`;
+
+  if (event.target.value === 'rock') {
+    playerWeaponPara.textContent = 'Your choice: 🪨';
+  } else if (event.target.value === 'paper') {
+    playerWeaponPara.textContent = 'Your choice: 📜';
+  } else {
+    playerWeaponPara.textContent = 'Your choice: ✂️';
+  }
+
+  if (computerChoice === 'rock') {
+    computerWeaponPara.textContent = 'Computer choice: 🪨';
+  } else if (computerChoice === 'paper') {
+    computerWeaponPara.textContent = 'Computer choice: 📜';
+  } else {
+    computerWeaponPara.textContent = 'Computer choice: ✂️';
+  }
+
+  if (result === 'won') {
+    resultPara.textContent = 'YOU WIN THIS ROUND!';
+    playerScore++;
+  } else if (result === 'tie') {
+    resultPara.textContent = 'TIE!';
+  } else {
+    resultPara.textContent = 'YOU LOSE THIS ROUND...';
+    computerScore++;
+  }
+
+  playerScorePara.textContent = `YOU: ${playerScore}`;
+  computerScorePara.textContent = `COMPUTER: ${computerScore}`;
 
   // Game over behaviour
   if (playerScore === scoreToWin || computerScore === scoreToWin) {
@@ -163,36 +205,8 @@ function playGame(event) {
     } else {
       gameOverPara.textContent = 'Computer wins this time...';
     }
-    return;
-  }
-
-  // Get result and update variables
-  let computerChoice = getComputerChoice();
-  let result = playRound(event.target.value, computerChoice);
-
-  if (result === 'won') {
-    playerScore++;
-  } else if (result === 'lost') {
-    computerScore++;
-  }
-  round++;
-
-  // Update text in all paragraphs
-  roundPara.textContent = `ROUND ${round}`;
-
-  if (event.target.value === 'rock') {
-    playerWeaponPara.textContent = 'You chose 🪨 this round.';
-  } else if (event.target.value === 'paper') {
-    playerWeaponPara.textContent = 'You chose 📜 this round.';
-  } else {
-    playerWeaponPara.textContent = 'You chose ✂️ this round.';
-  }
-
-  if (computerChoice === 'rock') {
-    computerWeaponPara.textContent = 'Computer chose 🪨 this round.';
-  } else if (computerChoice === 'paper') {
-    computerWeaponPara.textContent = 'Computer chose 📜 this round.';
-  } else {
-    computerWeaponPara.textContent = 'Computer chose ✂️ this round.';
+    
+    // Remove respective event listener
+    buttonsDiv.removeEventListener('click', playGame);
   }
 }
