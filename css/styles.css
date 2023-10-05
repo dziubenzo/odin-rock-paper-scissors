@@ -21,6 +21,10 @@ body {
   align-items: center;
 }
 
+#weapon-heading {
+  margin: 50px 0 30px;
+}
+
 .buttons {
   display: flex;
 }
@@ -44,4 +48,11 @@ button {
 
 .scissors:hover {
   background-color: rgb(255, 219, 219);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
