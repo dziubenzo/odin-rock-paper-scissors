@@ -38,7 +38,6 @@ function playRound(playerChoice, computerChoice) {
       }
     case 'paper':
       if (computerChoice === 'rock') {
-        console.log('You win! Paper beats Rock :)');
         return 'won';
       } else if (computerChoice === 'paper') {
         console.log('Tie!');
@@ -124,9 +123,22 @@ computerScorePara.classList.add('computer-score');
 
 const buttonsDiv = document.querySelector('.buttons');
 
-// Add result-related HTML elements to the DOM once a button is clicked
 buttonsDiv.addEventListener('click', showParas, { once: true });
 
+buttonsDiv.addEventListener('click', playGame);
+
+// Add result-related HTML elements to the DOM once a button is clicked
 function showParas() {
   parent.appendChild(roundPara);
+  parent.appendChild(playerWeaponPara);
+  parent.appendChild(computerWeaponPara);
+  parent.appendChild(resultPara);
+  parent.appendChild(playerScorePara);
+  parent.appendChild(computerScorePara);
+}
+
+// Play the game and update scores once a button is clicked
+function playGame(event) {
+  let computerChoice = getComputerChoice();
+  let result = playRound(event.target.value, computerChoice);
 }
