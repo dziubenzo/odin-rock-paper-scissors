@@ -129,7 +129,6 @@ buttonsDiv.addEventListener('click', playGame);
 
 // Add result-related HTML elements to the DOM once a button is clicked
 function showParas(event) {
-
   // Make sure only one of the buttons triggers the event
   if (event.target === buttonsDiv) {
     return;
@@ -144,7 +143,6 @@ function showParas(event) {
 
 // Play the game and update scores once a button is clicked
 function playGame(event) {
-
   // Make sure only one of the buttons triggers the event
   if (event.target === buttonsDiv) {
     return;
@@ -158,6 +156,7 @@ function playGame(event) {
     parent.removeChild(resultPara);
     let gameOverPara = document.createElement('p');
     gameOverPara.classList.add('game-over');
+    parent.appendChild(gameOverPara);
 
     if (playerScore === scoreToWin) {
       gameOverPara.textContent = 'YOU WIN! CONGRATULATIONS!';
@@ -177,4 +176,23 @@ function playGame(event) {
     computerScore++;
   }
   round++;
+
+  // Update text in all paragraphs
+  roundPara.textContent = `ROUND ${round}`;
+
+  if (event.target.value === 'rock') {
+    playerWeaponPara.textContent = 'You chose 🪨 this round.';
+  } else if (event.target.value === 'paper') {
+    playerWeaponPara.textContent = 'You chose 📜 this round.';
+  } else {
+    playerWeaponPara.textContent = 'You chose ✂️ this round.';
+  }
+
+  if (computerChoice === 'rock') {
+    computerWeaponPara.textContent = 'Computer chose 🪨 this round.';
+  } else if (computerChoice === 'paper') {
+    computerWeaponPara.textContent = 'Computer chose 📜 this round.';
+  } else {
+    computerWeaponPara.textContent = 'Computer chose ✂️ this round.';
+  }
 }
