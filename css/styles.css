@@ -48,15 +48,15 @@ button {
   cursor: pointer;
 }
 
-.rock:hover {
+.button-rock:hover {
   background-color: rgb(237, 237, 237);
 }
 
-.paper:hover {
+.button-paper:hover {
   background-color: rgb(255, 240, 221);
 }
 
-.scissors:hover {
+.button-scissors:hover {
   background-color: rgb(255, 219, 219);
 }
 
