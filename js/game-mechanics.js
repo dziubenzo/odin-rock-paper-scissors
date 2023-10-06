@@ -120,12 +120,12 @@ function playGame(event) {
   weaponsPara.textContent = `${playerEmoji} versus ${computerEmoji}`;
 
   if (result === 'won') {
-    resultPara.textContent = 'YOU WIN THIS ROUND!';
+    resultPara.textContent = 'YOU WIN!';
     playerScore++;
   } else if (result === 'tie') {
     resultPara.textContent = 'TIE!';
   } else {
-    resultPara.textContent = 'YOU LOSE THIS ROUND...';
+    resultPara.textContent = 'YOU LOSE!';
     computerScore++;
   }
 
@@ -134,7 +134,6 @@ function playGame(event) {
 
   // Game over behaviour
   if (playerScore === scoreToWin || computerScore === scoreToWin) {
-    parent.removeChild(roundPara);
     resultPara.classList.replace('result-round', 'game-over');
     // Move para to the end
     parent.appendChild(resultPara);
@@ -142,7 +141,7 @@ function playGame(event) {
     if (playerScore === scoreToWin) {
       resultPara.textContent = 'GAME OVER! YOU WIN!';
     } else {
-      resultPara.textContent = 'GAME OVER! Computer wins this time...';
+      resultPara.textContent = 'GAME OVER! YOU LOSE...';
     }
 
     // Remove respective event listener
