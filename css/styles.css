@@ -98,3 +98,11 @@ button {
 .computer-score {
   margin: 8px;
 }
+
+.win {
+  background-color: rgb(182, 255, 173);
+}
+
+.lose {
+  background-color: rgb(255, 176, 176);
+}

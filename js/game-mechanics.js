@@ -140,8 +140,10 @@ function playGame(event) {
 
     if (playerScore === scoreToWin) {
       resultPara.textContent = 'GAME OVER! YOU WIN!';
+      parent.classList.add('win');
     } else {
       resultPara.textContent = 'GAME OVER! YOU LOSE...';
+      parent.classList.add('lose');
     }
 
     // Remove respective event listener
