@@ -1,3 +1,35 @@
+// UI implementation
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+const scoreToWin = 5;
+
+const parent = document.querySelector('.results');
+
+let roundPara = document.createElement('p');
+roundPara.classList.add('round');
+
+let weaponsPara = document.createElement('p');
+weaponsPara.classList.add('weapons');
+
+let resultPara = document.createElement('p');
+resultPara.classList.add('result-round');
+
+let playerScorePara = document.createElement('p');
+playerScorePara.classList.add('player-score');
+
+let computerScorePara = document.createElement('p');
+computerScorePara.classList.add('computer-score');
+
+const buttonsDiv = document.querySelector('.buttons');
+
+buttonsDiv.addEventListener('click', showParas);
+
+buttonsDiv.addEventListener('click', playGame);
+
+// FUNCTIONS
+
 // Get random computer choice for the game
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
@@ -50,35 +82,6 @@ function playRound(playerChoice, computerChoice) {
       }
   }
 }
-// UI implementation
-
-let playerScore = 0;
-let computerScore = 0;
-let round = 0;
-const scoreToWin = 5;
-
-const parent = document.querySelector('.results');
-
-let roundPara = document.createElement('p');
-roundPara.classList.add('round');
-
-let weaponsPara = document.createElement('p');
-weaponsPara.classList.add('weapons');
-
-let resultPara = document.createElement('p');
-resultPara.classList.add('result-round');
-
-let playerScorePara = document.createElement('p');
-playerScorePara.classList.add('player-score');
-
-let computerScorePara = document.createElement('p');
-computerScorePara.classList.add('computer-score');
-
-const buttonsDiv = document.querySelector('.buttons');
-
-buttonsDiv.addEventListener('click', showParas);
-
-buttonsDiv.addEventListener('click', playGame);
 
 // Add result-related HTML elements to the DOM once a button is clicked
 function showParas(event) {
